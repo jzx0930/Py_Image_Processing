@@ -9,7 +9,7 @@ Python 影像處理專案，提供多種常見的影像處理功能。
 
 可直接在瀏覽器開啟以下連結，上傳圖片即可測試所有功能，不需要安裝任何軟體：
 
-**https://250319pyimageprocessing-hmnuyuwm4rxzrojaydmyac.streamlit.app/**
+**https://pyimageprocessing-qb3njrgpzsvgiz9eihvvkb.streamlit.app/**
 
 ---
 
