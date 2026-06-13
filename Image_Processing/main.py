@@ -60,21 +60,21 @@ while True:
         print("5. 影像校正")            # 幾何校正、透視變換等
         print("00. 手動指定最後有效影像路徑")            
 
-        print("-----------------------------")
-        choice = input("請輸入選項編號：")
+        print("-----------------------------")  # 印出分隔線，讓選單更清楚
+        choice = input("請輸入選項編號：")  # 取得使用者輸入的選項編號
 
-        if choice == '0':
-            print("🚪 程式結束。")
-            break
+        if choice == '0':  # 若輸入 0
+            print("🚪 程式結束。")  # 顯示結束訊息
+            break  # 跳出主迴圈，結束程式
 
-        if choice == '00':
-            success = manager.manual_select_image()
-        else:
-            success = manager.run_step(choice)
+        if choice == '00':  # 若輸入 00（手動指定影像）
+            success = manager.manual_select_image()  # 呼叫手動選圖功能，回傳是否成功
+        else:  # 其他選項
+            success = manager.run_step(choice)  # 依選項執行對應的影像處理步驟
 
-        success = manager.run_step(choice)
+        success = manager.run_step(choice)  # 再次執行該步驟並更新成功狀態
 
-        if not success:
-            continue
+        if not success:  # 若處理未成功（取消或失敗）
+            continue  # 回到迴圈開頭，重新顯示選單
 
-        print(f"✅ 已完成處理，目前影像路徑：{manager.current_image_path}")
+        print(f"✅ 已完成處理，目前影像路徑：{manager.current_image_path}")  # 顯示處理完成與目前影像路徑

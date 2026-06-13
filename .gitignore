@@ -1,0 +1,28 @@
+__pycache__/
+*.pyc
+*.pyo
+.vscode/
+*.log
+log.txt
+
+# 程式執行時自動產生的輸出資料夾
+Image_Processing/Original Image/
+Image_Processing/Pipeline_Result/
+Image_Processing/Binarized/
+Image_Processing/Color_Space_Channel/
+Image_Processing/Intensity_Transform/
+Image_Processing/Edge_Detection/
+Image_Processing/Hough/
+Image_Processing/Fourier/
+Image_Processing/Morphology/
+Image_Processing/Sharpen/
+Image_Processing/Geometry/
+Image_Processing/Filter/
+Image_Processing/Object_Extract/
+Image_Processing/Contour/
+Image_Processing/Chaincode/
+Image_Processing/Perspective/
+Image_Processing/Inpaint/
+Image_Processing/Watershed/
+Image_Processing/Template_Match/
+Image_Processing/Rayleigh/

@@ -3,3 +3,4 @@ numpy
 streamlit
 Pillow
 PyQt6
+streamlit-image-coordinates

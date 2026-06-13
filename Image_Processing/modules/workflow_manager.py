@@ -1,4 +1,4 @@
-from modules.image_selector import ImageSelector
+from modules.image_selector import ImageSelector  # 匯入影像選擇器類別，用於手動選圖
 
 class WorkflowManager:  # 建立流程管理器類別，用來控制影像處理流程與狀態
     def __init__(self, original_image_path):  # 初始化方法，傳入原始影像路徑
@@ -18,38 +18,38 @@ class WorkflowManager:  # 建立流程管理器類別，用來控制影像處理
         self.last_valid_image_path = result_path  # 同時更新最後有效影像路徑
         return True  # 回傳 True，表示流程成功
 
-    def dispatch_process(self, method, image_path):
-        if method == '1':
-            from color_space import process
-            return process(image_path)
-        elif method == '2':
-            from binarize import process
-            return process(image_path)
-        elif method == '3':
-            from edge_detect import process
-            return process(image_path)
-        elif method == '4':
-            from intensity_transform import process
-            return process(image_path)
-        elif method == '5':
-            from image_correction import process
-            return process(image_path)
-        else:
-            print("❌ 無效選項")
-            return None
+    def dispatch_process(self, method, image_path):  # 依照選項編號分派到對應的處理模組
+        if method == '1':  # 選項 1：色彩空間分離
+            from color_space import process  # 匯入色彩空間模組的處理函式
+            return process(image_path)  # 執行並回傳結果路徑
+        elif method == '2':  # 選項 2：二值化處理
+            from binarize import process  # 匯入二值化模組的處理函式
+            return process(image_path)  # 執行並回傳結果路徑
+        elif method == '3':  # 選項 3：邊緣偵測
+            from edge_detect import process  # 匯入邊緣偵測模組的處理函式
+            return process(image_path)  # 執行並回傳結果路徑
+        elif method == '4':  # 選項 4：影像強度轉換
+            from intensity_transform import process  # 匯入強度轉換模組的處理函式
+            return process(image_path)  # 執行並回傳結果路徑
+        elif method == '5':  # 選項 5：影像校正
+            from image_correction import process  # 匯入影像校正模組的處理函式
+            return process(image_path)  # 執行並回傳結果路徑
+        else:  # 其他無法辨識的選項
+            print("❌ 無效選項")  # 顯示錯誤訊息
+            return None  # 回傳 None 表示沒有結果
 
-    def manual_select_image(self):
-        selector = ImageSelector(self.last_valid_image_path)
-        file_path, image = selector.select_image()
+    def manual_select_image(self):  # 手動選擇影像，重新指定處理目標
+        selector = ImageSelector(self.last_valid_image_path)  # 建立影像選擇器，以最後有效影像所在位置為起點
+        file_path, image = selector.select_image()  # 開啟對話框讓使用者選圖，取得路徑與影像
 
-        if file_path and image is not None:
-            self.last_valid_image_path = file_path
-            self.current_image_path = file_path
-            print(f"✅ 已更新影像路徑為：{file_path}")
-            return True
-        else:
-            print("⚠️ 未更新影像路徑。")
-            return False
+        if file_path and image is not None:  # 若成功選到檔案且影像可讀取
+            self.last_valid_image_path = file_path  # 更新最後有效影像路徑
+            self.current_image_path = file_path  # 更新目前影像路徑
+            print(f"✅ 已更新影像路徑為：{file_path}")  # 顯示更新成功訊息
+            return True  # 回傳 True 表示成功
+        else:  # 若沒有選到或讀取失敗
+            print("⚠️ 未更新影像路徑。")  # 顯示未更新提示
+            return False  # 回傳 False 表示失敗
 
 
 
